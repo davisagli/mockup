@@ -151,7 +151,8 @@ define([
         imageAlign: _t('Align'),
         scale: _t('Size'),
         alt: _t('Alternative Text'),
-        externalImage: _t('External Image URL (can be relative within this site or absolute if it starts with http:// or https://)')
+        externalImage: _t('External Image URL (can be relative within this site or absolute if it starts with http:// or https://)'),
+        caption: _t('Show Caption')
       },
       // URL generation options
       loadingBaseUrl: '../../../bower_components/tinymce-builded/js/tinymce/',

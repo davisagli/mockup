@@ -459,6 +459,7 @@ define([
         titleText: this.options.text.title,
         externalImageText: this.options.text.externalImage,
         altText: this.options.text.alt,
+        captionText: this.options.text.caption,
         imageAlignText: this.options.text.imageAlign,
         scaleText: this.options.text.scale,
         scales: this.options.scales,
@@ -481,6 +482,7 @@ define([
       self.$alt = $('input[name="alt"]', self.modal.$modal);
       self.$align = $('select[name="align"]', self.modal.$modal);
       self.$scale = $('select[name="scale"]', self.modal.$modal);
+      self.$caption = $('input[name="caption"]', self.modal.$modal);
 
       /* load up all the link types */
       _.each(self.options.linkTypes, function(type) {
@@ -593,6 +595,7 @@ define([
       } else {
         self.dom.setAttribs(self.imgElm, data);
       }
+      $(self.imgElm).toggleClass('captioned', self.$caption.prop('checked'));
 
       waitLoad(self.imgElm);
       if (self.imgElm.complete) {
@@ -737,6 +740,7 @@ define([
           var src = self.dom.getAttrib(self.imgElm, 'src');
           self.$title.val(self.dom.getAttrib(self.imgElm, 'title'));
           self.$alt.val(self.dom.getAttrib(self.imgElm, 'alt'));
+          self.$caption.prop('checked', $(self.imgElm).hasClass('captioned'));
           linkType = self.dom.getAttrib(self.imgElm, 'data-linktype');
           if (linkType) {
             self.linkType = linkType;
